@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local planning docs (not part of the site)
+martinez-junk-removal-BUILD-PROMPT.md
+CHANGES-01-reviews-legal-footer.md
+reviews-data.json
