@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PlaceholderBlock } from "@/components/PlaceholderBlock";
-import { PrimaryCta, CallButton, TextButton } from "@/components/Buttons";
+import { PrimaryCta, CallButton } from "@/components/Buttons";
 import { TrustBar } from "@/components/TrustBar";
 import { ReviewCard } from "@/components/ReviewCard";
-import { ServiceCard } from "@/components/ServiceCard";
+import { DumpsterCard } from "@/components/DumpsterCard";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { PhotoQuoteCallout } from "@/components/PhotoQuoteCallout";
-import { business, services, reviews, faqs, cities } from "@/lib/business";
+import { business, dumpsters, faqs, cities, totalReviewCount } from "@/lib/business";
+import { getFeaturedReviews } from "@/lib/reviews";
 import { imageSlots } from "@/lib/images";
 
 export const metadata: Metadata = {
-  title: "Junk Removal & Dumpster Rental in Chino, CA | Martinez Junk Removal",
+  title: "Dumpster Rental in Chino, CA | Martinez Junk Removal",
   description:
-    "Fast, friendly, flat-rate junk removal and dumpster rental for homes and businesses across LA, Orange, San Bernardino & Riverside counties. Same-day service available. Se habla español.",
+    "Roll-off dumpster rental in Chino & the Inland Empire — same-day availability, flat-rate pricing, on-time drop-off & pickup. Serving LA, Orange, San Bernardino & Riverside counties. Se habla español.",
   alternates: { canonical: "/" },
 };
 
@@ -27,8 +28,8 @@ const valueProps = [
     body: "Courteous drivers, respectful of your property, clean bins.",
   },
   {
-    title: "We do the heavy lifting",
-    body: "Full-service removal — you don't lift a thing.",
+    title: "Same-day availability",
+    body: "Often able to drop off the same day you call — just ask.",
   },
   {
     title: "Local & reliable since 2019",
@@ -39,17 +40,19 @@ const valueProps = [
 const steps = [
   {
     title: "Call, text, or request a quote",
-    body: "Text photos to (562) 639-5747 for the fastest, most accurate price.",
+    body: `Text photos of the job to ${business.phoneDisplay} for the fastest, most accurate price.`,
   },
   {
     title: "We schedule — often same day",
-    body: "Pick a time that works. Same-day service is available across our service area.",
+    body: "Pick a time that works. Same-day drop-off is available across our service area.",
   },
   {
-    title: "We haul it away & clean up",
-    body: "The crew does the lifting and loading, then leaves the space clean.",
+    title: "We drop off, you fill, we pick up",
+    body: "Clean bin, on-time drop-off and pickup, flat rate — no hidden fees.",
   },
 ];
+
+const homeReviews = getFeaturedReviews("dumpster", 6);
 
 export default function HomePage() {
   return (
@@ -58,14 +61,14 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 md:py-20">
           <div>
             <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-brand-200">
-              🇪🇸 Se habla español · Formerly JunkGuys LA
+              🇪🇸 Se habla español
             </p>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
-              Junk Removal &amp; Dumpster Rental in Chino &amp; the Inland Empire
+              Roll-Off Dumpster Rental in Chino &amp; the Inland Empire
             </h1>
             <p className="mt-4 max-w-xl text-lg text-ink-200">
-              Fast, friendly, flat-rate hauling for homes and businesses across LA, Orange, San
-              Bernardino &amp; Riverside counties. Same-day service available.
+              Clean bins, flat-rate pricing, on-time drop-off &amp; pickup, and same-day
+              availability. Serving Los Angeles, Orange, San Bernardino &amp; Riverside counties.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <PrimaryCta>Get a Free Quote</PrimaryCta>
@@ -78,7 +81,7 @@ export default function HomePage() {
               </a>
             </p>
           </div>
-          <PlaceholderBlock alt={imageSlots.heroHome.alt} icon="truck" className="h-64 w-full md:h-80" />
+          <PlaceholderBlock alt={imageSlots.heroHome.alt} icon="dumpster" className="h-64 w-full md:h-80" />
         </div>
       </section>
 
@@ -116,20 +119,23 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">Our Services</h2>
+            <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">Dumpster Sizes &amp; Pricing</h2>
             <p className="mt-2 text-ink-600">
-              From a single couch to a full estate cleanout — we handle it all.
+              10-yard for heavy material, 20- or 40-yard for household &amp; general trash.
             </p>
           </div>
-          <Link href="/services" className="text-sm font-semibold text-brand-700 hover:underline">
-            View all services →
+          <Link href="/dumpster-rental" className="text-sm font-semibold text-brand-700 hover:underline">
+            See full pricing details →
           </Link>
         </div>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.slice(0, 6).map((service) => (
-            <ServiceCard key={service.slug} service={service} />
+          {dumpsters.map((d) => (
+            <DumpsterCard key={d.slug} dumpster={d} compact />
           ))}
         </div>
+        <p className="mt-6 text-sm text-ink-500">
+          Prices vary by location and material — get a free quote for your exact price.
+        </p>
       </section>
 
       <section className="bg-ink-50 py-16">
@@ -137,17 +143,19 @@ export default function HomePage() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">
-                ⭐ {business.rating.value.toFixed(1)} · {business.rating.count} Google Reviews
+                ⭐ {totalReviewCount} Reviews Across Google &amp; Yelp
               </h2>
-              <p className="mt-2 text-ink-600">Also 5-star rated on Yelp.</p>
+              <p className="mt-2 text-ink-600">
+                {business.googleRating.value.toFixed(1)} on Google · {business.yelpRating.value.toFixed(1)} on Yelp
+              </p>
             </div>
             <Link href="/reviews" className="text-sm font-semibold text-brand-700 hover:underline">
               Read all reviews →
             </Link>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {reviews.slice(0, 6).map((review) => (
-              <ReviewCard key={review.name} review={review} />
+            {homeReviews.map((review) => (
+              <ReviewCard key={review.id} review={review} />
             ))}
           </div>
         </div>
@@ -160,8 +168,8 @@ export default function HomePage() {
               Proudly Serving the Inland Empire &amp; Beyond
             </h2>
             <p className="mt-3 text-ink-600">
-              Based in Chino, we serve homeowners and businesses across Los Angeles, Orange, San
-              Bernardino, and Riverside counties — {cities.length}+ cities and counting.
+              Based in Chino, we deliver dumpsters to homeowners and businesses across Los Angeles,
+              Orange, San Bernardino, and Riverside counties — {cities.length}+ cities and counting.
             </p>
             <Link href="/service-area" className="mt-4 inline-block text-sm font-semibold text-brand-700 hover:underline">
               See the full service area →
@@ -192,7 +200,7 @@ export default function HomePage() {
             Frequently Asked Questions
           </h2>
           <div className="mt-8">
-            <FaqAccordion items={faqs} />
+            <FaqAccordion items={faqs.slice(0, 6)} />
           </div>
           <Link href="/faq" className="mt-4 inline-block text-sm font-semibold text-brand-700 hover:underline">
             More FAQs →
@@ -202,14 +210,13 @@ export default function HomePage() {
 
       <section className="bg-brand-900 py-16 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <h2 className="font-heading text-3xl font-bold sm:text-4xl">Ready to Clear It Out?</h2>
+          <h2 className="font-heading text-3xl font-bold sm:text-4xl">Ready to Book a Bin?</h2>
           <p className="mt-3 text-lg text-brand-100">
-            Get a fast, flat-rate quote today — same-day service often available.
+            Get a fast, flat-rate quote today — same-day drop-off often available.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <PrimaryCta>Get a Free Quote</PrimaryCta>
             <CallButton className="bg-white text-ink-900 hover:bg-brand-50" />
-            <TextButton className="border-white text-white hover:bg-white hover:text-ink-900" />
           </div>
           <div className="mt-8 mx-auto max-w-lg">
             <PhotoQuoteCallout tone="dark" />

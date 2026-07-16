@@ -43,4 +43,5 @@ next-env.d.ts
 # Local planning docs (not part of the site)
 martinez-junk-removal-BUILD-PROMPT.md
 CHANGES-01-reviews-legal-footer.md
-reviews-data.json
+CHANGES-03-dumpster-pivot.md
+CHANGES-04-dumpster-pricing.md

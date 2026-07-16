@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { PrimaryCta, CallButton } from "@/components/Buttons";
-import { ReviewCard } from "@/components/ReviewCard";
-import { business, reviews } from "@/lib/business";
+import { ReviewsExplorer } from "@/components/ReviewsExplorer";
+import { business, totalReviewCount } from "@/lib/business";
+import { allReviews } from "@/lib/reviews";
 import { imageSlots } from "@/lib/images";
 
 export const metadata: Metadata = {
-  title: "Reviews — 5.0 Stars on Google | Martinez Junk Removal",
-  description:
-    "See why Martinez Junk Removal holds a 5.0-star rating across 58 Google reviews (also 5-star on Yelp) for junk removal and dumpster rental in Chino and the Inland Empire.",
+  title: `Reviews — ${totalReviewCount} 5-Star Ratings | Martinez Junk Removal`,
+  description: `See why Martinez Junk Removal holds ${totalReviewCount} five-star-rated reviews across Google (${business.googleRating.value.toFixed(1)}) and Yelp (${business.yelpRating.value.toFixed(1)}) for dumpster rental in Chino and the Inland Empire.`,
   alternates: { canonical: "/reviews" },
 };
 
@@ -18,8 +18,8 @@ export default function ReviewsPage() {
       <PageHero
         icon="sparkles"
         image={imageSlots.heroReviews}
-        title="5.0 Stars, 58 Google Reviews"
-        subtitle="Also 5-star rated on Yelp. Here's what real customers across the Inland Empire and LA have to say."
+        title={`${totalReviewCount} Reviews Across Google & Yelp`}
+        subtitle={`${business.googleRating.value.toFixed(1)} on Google · ${business.yelpRating.value.toFixed(1)} on Yelp — here's what real customers across the Inland Empire and LA have to say.`}
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
@@ -28,14 +28,19 @@ export default function ReviewsPage() {
             {"★★★★★"}
           </div>
           <p className="font-heading text-4xl font-bold text-ink-900 sm:text-5xl">
-            {business.rating.value.toFixed(1)}{" "}
+            {totalReviewCount}{" "}
             <span className="text-2xl font-semibold text-ink-500 sm:text-3xl">
-              · {business.rating.count} Google Reviews
+              reviews across Google &amp; Yelp
             </span>
+          </p>
+          <p className="text-ink-600">
+            {business.googleRating.value.toFixed(1)} on Google ({business.googleRating.count}{" "}
+            reviews) · {business.yelpRating.value.toFixed(1)} on Yelp ({business.yelpRating.count}{" "}
+            reviews)
           </p>
           <p className="max-w-xl text-ink-600">
             Every review below is a real customer talking about real jobs — dumpster
-            drop-offs, full cleanouts, demo work, and more.
+            drop-offs, pickups, and more.
           </p>
           <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
             <a
@@ -56,10 +61,8 @@ export default function ReviewsPage() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review) => (
-            <ReviewCard key={review.name} review={review} />
-          ))}
+        <div className="mt-12">
+          <ReviewsExplorer reviews={allReviews} />
         </div>
       </section>
 
@@ -69,7 +72,7 @@ export default function ReviewsPage() {
             Ready to Join Our Happy Customers?
           </h2>
           <p className="mt-3 text-lg text-brand-100">
-            Get a fast, flat-rate quote today — same-day service often available.
+            Get a fast, flat-rate dumpster quote today — same-day drop-off often available.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <PrimaryCta>Get a Free Quote</PrimaryCta>

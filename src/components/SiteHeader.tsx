@@ -3,16 +3,16 @@
 import Link from "next/link";
 import { useState } from "react";
 import { business } from "@/lib/business";
-import { CallButton, TextButton } from "@/components/Buttons";
+import { CallButton, PrimaryCta } from "@/components/Buttons";
 
 const navLinks = [
-  { href: "/services", label: "Services" },
-  { href: "/junk-removal", label: "Junk Removal" },
+  { href: "/", label: "Home" },
   { href: "/dumpster-rental", label: "Dumpster Rental" },
   { href: "/service-area", label: "Service Area" },
   { href: "/reviews", label: "Reviews" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader() {
@@ -22,15 +22,12 @@ export function SiteHeader() {
     <>
       <header className="sticky top-0 z-40 border-b border-ink-100 bg-paper/95 backdrop-blur supports-[backdrop-filter]:bg-paper/80">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-          <Link href="/" className="flex items-center gap-2 font-heading text-lg font-bold text-ink-900 sm:text-xl">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-700 text-white">
-              MJ
+          <Link href="/" className="flex flex-col leading-tight">
+            <span className="font-heading text-lg font-bold text-ink-900 sm:text-xl">
+              {business.displayName}
             </span>
-            <span className="leading-tight">
-              Martinez
-              <span className="block text-xs font-medium tracking-wide text-brand-700">
-                JUNK REMOVAL
-              </span>
+            <span className="text-xs font-medium tracking-wide text-brand-700">
+              {business.displayTagline.toUpperCase()}
             </span>
           </Link>
 
@@ -51,7 +48,7 @@ export function SiteHeader() {
               🇪🇸 Se habla español
             </span>
             <CallButton className="px-4 py-2 text-sm" />
-            <TextButton className="px-4 py-2 text-sm" />
+            <PrimaryCta className="px-4 py-2 text-sm">Get a Quote</PrimaryCta>
           </div>
 
           <button
@@ -85,13 +82,6 @@ export function SiteHeader() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50"
-              >
-                Get a Free Quote
-              </Link>
             </nav>
             <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
               🇪🇸 Se habla español
@@ -102,10 +92,10 @@ export function SiteHeader() {
 
       <div className="fixed inset-x-0 bottom-0 z-40 flex gap-2 border-t border-ink-100 bg-paper/95 p-2 backdrop-blur md:hidden">
         <CallButton className="w-1/2 py-2.5 text-sm" />
-        <TextButton className="w-1/2 py-2.5 text-sm" />
+        <PrimaryCta className="w-1/2 py-2.5 text-sm">Get a Quote</PrimaryCta>
       </div>
 
-      <span className="sr-only">{business.name} main navigation</span>
+      <span className="sr-only">{business.displayName} main navigation</span>
     </>
   );
 }

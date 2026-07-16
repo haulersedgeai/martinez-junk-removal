@@ -1,8 +1,8 @@
-import { business } from "@/lib/business";
+import { business, totalReviewCount } from "@/lib/business";
 
 const items = [
-  `⭐ ${business.rating.value.toFixed(1)} on Google`,
-  `${business.rating.count} reviews`,
+  `⭐ ${business.googleRating.value.toFixed(1)} on Google`,
+  `${totalReviewCount} reviews across Google & Yelp`,
   `Locally owned since ${business.founded}`,
   "Same-day available",
   "Flat rate, no hidden fees",

@@ -2,8 +2,6 @@ import Link from "next/link";
 import { business, cities } from "@/lib/business";
 
 const quickLinks = [
-  { href: "/services", label: "Services" },
-  { href: "/junk-removal", label: "Junk Removal" },
   { href: "/dumpster-rental", label: "Dumpster Rental" },
   { href: "/service-area", label: "Service Area" },
   { href: "/reviews", label: "Reviews" },
@@ -17,10 +15,9 @@ export function SiteFooter() {
     <footer className="border-t border-ink-800 bg-ink-900 pb-24 text-ink-100 md:pb-0">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
         <div>
-          <p className="font-heading text-lg font-bold text-white">{business.name}</p>
+          <p className="font-heading text-lg font-bold text-white">{business.displayName}</p>
           <p className="mt-2 text-sm text-ink-300">
-            Locally owned &amp; operated by {business.owner} since {business.founded}. Formerly{" "}
-            {business.formerName}.
+            Locally owned &amp; operated by {business.owner} since {business.founded}.
           </p>
           <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-700/30 px-3 py-1 text-xs font-semibold text-brand-200">
             🇪🇸 Se habla español
@@ -32,12 +29,10 @@ export function SiteFooter() {
           <ul className="mt-3 space-y-2 text-sm">
             <li>
               <a href={`tel:${business.phoneTel}`} className="hover:text-brand-300">
-                Call: {business.phoneDisplay}
-              </a>
-            </li>
-            <li>
-              <a href={business.phoneSms} className="hover:text-brand-300">
-                Text: {business.phoneDisplay}
+                Call or Text: {business.phoneDisplay}
+              </a>{" "}
+              <a href={business.phoneSms} className="text-ink-400 hover:text-brand-300">
+                (text)
               </a>
             </li>
             <li>
@@ -46,7 +41,11 @@ export function SiteFooter() {
               </a>
             </li>
             <li className="text-ink-300">{business.city}, {business.state}</li>
-            <li className="text-ink-300">{business.hours}</li>
+            <li className="text-ink-300">
+              {business.hoursDisplay} · {business.hoursClosed}
+            </li>
+            <li className="text-ink-300">{business.sameDayNote}</li>
+            <li className="text-ink-400 text-xs">Accepts {business.payments.join(" · ")}</li>
           </ul>
         </div>
 
@@ -79,7 +78,7 @@ export function SiteFooter() {
               href={business.socials.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Martinez Junk Removal on Facebook"
+              aria-label={`${business.displayName} on Facebook`}
               className="flex h-9 w-9 items-center justify-center rounded-full bg-ink-800 hover:bg-brand-700"
             >
               <FacebookIcon />
@@ -88,7 +87,7 @@ export function SiteFooter() {
               href={business.socials.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Martinez Junk Removal on Instagram"
+              aria-label={`${business.displayName} on Instagram`}
               className="flex h-9 w-9 items-center justify-center rounded-full bg-ink-800 hover:bg-brand-700"
             >
               <InstagramIcon />
@@ -97,7 +96,7 @@ export function SiteFooter() {
               href={business.socials.yelp}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Martinez Junk Removal on Yelp"
+              aria-label={`${business.displayName} on Yelp`}
               className="flex h-9 w-9 items-center justify-center rounded-full bg-ink-800 hover:bg-brand-700"
             >
               <YelpIcon />
@@ -107,7 +106,28 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-ink-800 px-4 py-6 text-center text-xs text-ink-400 sm:px-6">
-        © 2026 {business.name}. All rights reserved.
+        <p>
+          © 2026 {business.name}. All rights reserved. ·{" "}
+          <Link href="/terms" className="hover:text-brand-300">
+            Terms of Service
+          </Link>{" "}
+          ·{" "}
+          <Link href="/privacy" className="hover:text-brand-300">
+            Privacy Policy
+          </Link>
+        </p>
+        <p className="mt-2">
+          Powered by{" "}
+          <a
+            href="https://adimize.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold hover:text-brand-300"
+          >
+            Adimize
+          </a>{" "}
+          – Local Service Digital Marketing
+        </p>
       </div>
     </footer>
   );

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { PrimaryCta, CallButton } from "@/components/Buttons";
-import { business } from "@/lib/business";
+import { ReviewCard } from "@/components/ReviewCard";
 import { imageSlots } from "@/lib/images";
+import { getFeaturedReviews } from "@/lib/reviews";
 
 export const metadata: Metadata = {
   title: "About Mario Martinez & Our Crew | Martinez Junk Removal",
   description:
-    "Martinez Junk Removal is a locally owned junk removal and dumpster rental company founded by Mario Martinez in 2019 in Chino, CA. Meet the crew and see what drives us.",
+    "Martinez Junk Removal is a locally owned roll-off dumpster rental company founded by Mario Martinez in 2019 in Chino, CA. Meet the crew and see what drives us.",
   alternates: { canonical: "/about" },
 };
 
@@ -21,9 +22,14 @@ const valueProps = [
     body: "The price we quote is the price you pay — no hidden fees added after the truck is loaded.",
   },
   {
-    title: "We donate what we can",
-    body: "Usable furniture and household items are donated whenever possible instead of heading straight to the landfill.",
+    title: "Clean bins, every drop-off",
+    body: "Well-maintained roll-off dumpsters, placed exactly where you need them.",
   },
+];
+
+const aboutReviews = [
+  ...getFeaturedReviews("spanish", 1),
+  ...getFeaturedReviews("dumpster", 1),
 ];
 
 export default function AboutPage() {
@@ -43,34 +49,24 @@ export default function AboutPage() {
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <div className="space-y-5 text-ink-700">
           <p>
-            Martinez Junk Removal is a locally owned junk removal and dumpster rental
-            company founded by Mario Martinez in 2019 in Chino, California. It started
-            as one guy with a truck and a genuine love for the work — no job too small,
-            no job too big — and it has grown into a trusted crew serving homes and
-            businesses across Los Angeles, Orange, San Bernardino, and Riverside
-            counties.
+            Martinez Junk Removal is a locally owned roll-off dumpster rental company
+            founded by Mario Martinez in 2019 in Chino, California. It started as one
+            guy with a truck and a genuine love for the work — no job too small, no job
+            too big — and it has grown into a trusted crew serving homes and businesses
+            across Los Angeles, Orange, San Bernardino, and Riverside counties.
           </p>
           <p>
             Customer service comes first, every time. That means clear communication
-            from the first call or text, crews that show up on time, fair flat-rate
-            pricing with no surprise fees, and a job site that gets left spotless.
-            Whether it&apos;s a single couch off the curb, a full estate cleanout, tons of
-            construction debris, light demolition, a hot tub teardown, or a dumpster
-            parked in the driveway for a remodel, the goal never changes: make it easy,
-            make it clean, and make it affordable.
+            from the first call or text, drivers that show up on time, fair flat-rate
+            pricing with no surprise fees, and a clean bin dropped exactly where you
+            need it. Whether it&apos;s a driveway remodel, a construction site, or a
+            weekend cleanout, the goal never changes: make it easy, make it clean, and
+            make it affordable.
           </p>
           <p>
-            The crew donates usable items whenever possible instead of sending them
-            straight to the landfill, and offers contactless online payment to make
-            scheduling and paying as simple as the pickup itself. Se habla español —
-            Mario and the team are proud to serve the area&apos;s Spanish-speaking families
-            too.
-          </p>
-          <p>
-            Longtime customers may still know the company by its original name,{" "}
-            {business.formerName}. Same crew, same care, same guy answering the phone —
-            just a new name that better reflects who we are. Call or text Mario for a
-            free quote.
+            The crew offers contactless online payment to make scheduling and paying as
+            simple as the drop-off itself. Se habla español — Mario and the team are
+            proud to serve the area&apos;s Spanish-speaking families too.
           </p>
         </div>
 
@@ -80,6 +76,12 @@ export default function AboutPage() {
               <h3 className="font-heading text-lg font-bold text-brand-800">{prop.title}</h3>
               <p className="mt-2 text-sm text-ink-600">{prop.body}</p>
             </div>
+          ))}
+        </div>
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          {aboutReviews.map((review) => (
+            <ReviewCard key={review.id} review={review} />
           ))}
         </div>
       </section>

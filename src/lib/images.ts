@@ -21,13 +21,7 @@ export const imageSlots = {
   heroHome: {
     file: "hero-home.jpg",
     path: "/images/hero-home.jpg",
-    alt: "Martinez Junk Removal crew loading a truck in Chino, California",
-    kind: "placeholder",
-  },
-  heroJunkRemoval: {
-    file: "hero-junk-removal.jpg",
-    path: "/images/hero-junk-removal.jpg",
-    alt: "Crew hauling furniture and household junk out of a garage",
+    alt: "Clean roll-off dumpster delivered by Martinez Junk Removal in Chino, California",
     kind: "placeholder",
   },
   heroDumpsterRental: {
@@ -51,13 +45,7 @@ export const imageSlots = {
   heroContact: {
     file: "hero-contact.jpg",
     path: "/images/hero-contact.jpg",
-    alt: "Martinez Junk Removal truck ready for a same-day pickup",
-    kind: "placeholder",
-  },
-  heroServices: {
-    file: "hero-services.jpg",
-    path: "/images/hero-services.jpg",
-    alt: "Crew with tools and bins ready for a full-service junk removal job",
+    alt: "Martinez Junk Removal dumpster truck ready for same-day delivery",
     kind: "placeholder",
   },
   heroReviews: {

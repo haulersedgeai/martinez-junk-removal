@@ -5,12 +5,10 @@ import { business } from "@/lib/business";
 export const runtime = "nodejs";
 
 const SERVICE_LABELS: Record<string, string> = {
-  "junk-removal": "Junk Removal",
-  "dumpster-rental": "Dumpster Rental",
-  "appliance-removal": "Appliance Removal",
-  "construction-debris": "Construction Debris",
-  cleanout: "Cleanout",
-  other: "Other",
+  "10-yard": "10 Yard Dumpster — heavy debris",
+  "20-yard": "20 Yard Dumpster — household trash",
+  "40-yard": "40 Yard Dumpster — large trash",
+  "not-sure": "Not sure — help me pick",
 };
 
 type QuotePayload = {

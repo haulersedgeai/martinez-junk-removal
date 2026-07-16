@@ -4,7 +4,8 @@ import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { business, reviews } from "@/lib/business";
+import { business } from "@/lib/business";
+import { allReviews } from "@/lib/reviews";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,32 +24,33 @@ const siteUrl = "https://martinezjunkremoval.net";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Junk Removal & Dumpster Rental in Chino, CA | Martinez Junk Removal",
+    default: "Dumpster Rental in Chino, CA | Martinez Junk Removal",
     template: "%s | Martinez Junk Removal",
   },
   description:
-    "Flat-rate junk removal and roll-off dumpster rental serving Chino and the Inland Empire — LA, Orange, San Bernardino & Riverside counties. Same-day service. Se habla español. Call or text (562) 639-5747.",
+    "Roll-off dumpster rental serving Chino and the Inland Empire — LA, Orange, San Bernardino & Riverside counties. Same-day dumpster rental, flat rate, no hidden fees. Se habla español. Call or text (562) 639-5747.",
   keywords: [
-    "junk removal Chino",
     "dumpster rental Chino",
-    "junk removal Inland Empire",
-    "roll off dumpster rental",
+    "roll off dumpster Inland Empire",
+    "concrete dumpster rental",
+    "same day dumpster rental",
     "Martinez Junk Removal",
+    "Martinez Dumpsters",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: business.name,
-    title: "Junk Removal & Dumpster Rental in Chino, CA | Martinez Junk Removal",
+    siteName: business.displayName,
+    title: "Dumpster Rental in Chino, CA | Martinez Junk Removal",
     description:
-      "Fast, friendly, flat-rate hauling for homes and businesses across LA, Orange, San Bernardino & Riverside counties. Same-day service available.",
+      "Clean bins, flat-rate pricing, on-time drop-off & pickup, and same-day availability across LA, Orange, San Bernardino & Riverside counties.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Junk Removal & Dumpster Rental in Chino, CA | Martinez Junk Removal",
+    title: "Dumpster Rental in Chino, CA | Martinez Junk Removal",
     description:
-      "Fast, friendly, flat-rate hauling for homes and businesses across LA, Orange, San Bernardino & Riverside counties.",
+      "Clean bins, flat-rate pricing, on-time drop-off & pickup, and same-day availability across LA, Orange, San Bernardino & Riverside counties.",
   },
   icons: {
     icon: "/favicon.ico",
@@ -72,12 +74,12 @@ export default function RootLayout({
     "@id": `${siteUrl}/#business`,
     name: business.name,
     legalName: business.legalName,
-    alternateName: business.formerName,
     url: siteUrl,
     telephone: business.phoneTel,
     email: business.email,
     foundingDate: business.foundingDate,
     priceRange: "$$",
+    paymentAccepted: business.payments,
     knowsLanguage: ["en", "es"],
     address: {
       "@type": "PostalAddress",
@@ -90,18 +92,26 @@ export default function RootLayout({
       name: county,
     })),
     sameAs: [business.socials.facebook, business.socials.instagram, business.socials.yelp],
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "06:00",
+      closes: "17:00",
+    },
+    // Tied to the Google figure to stay within schema norms — the "110
+    // combined" figure is on-page marketing display only, not structured data.
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: business.rating.value,
-      reviewCount: business.rating.count,
+      ratingValue: business.googleRating.value,
+      reviewCount: business.googleRating.count,
     },
-    review: reviews.slice(0, 6).map((r) => ({
+    review: allReviews.slice(0, 6).map((r) => ({
       "@type": "Review",
       author: { "@type": "Person", name: r.name },
-      reviewBody: r.quote,
+      reviewBody: r.text,
       reviewRating: {
         "@type": "Rating",
-        ratingValue: 5,
+        ratingValue: r.rating,
         bestRating: 5,
       },
     })),

@@ -3,15 +3,19 @@ import { PageHero } from "@/components/PageHero";
 import { CallButton, TextButton } from "@/components/Buttons";
 import { PhotoQuoteCallout } from "@/components/PhotoQuoteCallout";
 import { QuoteForm } from "@/components/QuoteForm";
+import { ReviewCard } from "@/components/ReviewCard";
 import { business } from "@/lib/business";
+import { getFeaturedReviews } from "@/lib/reviews";
 import { imageSlots } from "@/lib/images";
 
 export const metadata: Metadata = {
-  title: "Contact Us — Get a Free Quote | Martinez Junk Removal",
+  title: "Contact Us — Get a Free Dumpster Quote | Martinez Junk Removal",
   description:
-    "Get a free, flat-rate junk removal or dumpster rental quote in Chino & the Inland Empire. Call or text (562) 639-5747 — se habla español.",
+    "Get a free, flat-rate dumpster rental quote in Chino & the Inland Empire. Call or text (562) 639-5747 — se habla español.",
   alternates: { canonical: "/contact" },
 };
+
+const contactReview = getFeaturedReviews("dumpster", 1)[0];
 
 export default function ContactPage() {
   return (
@@ -44,6 +48,8 @@ export default function ContactPage() {
           <div className="space-y-6">
             <PhotoQuoteCallout />
 
+            {contactReview ? <ReviewCard review={contactReview} /> : null}
+
             <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
               <h2 className="font-heading text-lg font-bold text-ink-900">Prefer to Talk?</h2>
               <ul className="mt-4 space-y-3 text-sm text-ink-700">
@@ -63,9 +69,15 @@ export default function ContactPage() {
                   </a>
                 </li>
               </ul>
-              <p className="mt-4 text-sm text-ink-600">{business.hours}</p>
+              <p className="mt-4 text-sm text-ink-600">
+                {business.hoursDisplay} · {business.hoursClosed}
+              </p>
+              <p className="mt-1 text-sm text-ink-600">{business.sameDayNote}</p>
               <p className="mt-1 text-sm text-ink-600">
                 Based in {business.city}, {business.state} — serving {business.serviceCounties.join(", ")}.
+              </p>
+              <p className="mt-3 text-sm text-ink-600">
+                Accepts {business.payments.join(" · ")}
               </p>
               <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
                 🇪🇸 Se habla español

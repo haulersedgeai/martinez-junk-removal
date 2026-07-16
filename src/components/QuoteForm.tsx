@@ -4,12 +4,10 @@ import { useState, type FormEvent } from "react";
 import { business } from "@/lib/business";
 
 const serviceOptions = [
-  { value: "junk-removal", label: "Junk Removal" },
-  { value: "dumpster-rental", label: "Dumpster Rental" },
-  { value: "appliance-removal", label: "Appliance Removal" },
-  { value: "construction-debris", label: "Construction Debris" },
-  { value: "cleanout", label: "Cleanout" },
-  { value: "other", label: "Other" },
+  { value: "10-yard", label: "10 Yard Dumpster — heavy debris" },
+  { value: "20-yard", label: "20 Yard Dumpster — household trash" },
+  { value: "40-yard", label: "40 Yard Dumpster — large trash" },
+  { value: "not-sure", label: "Not sure — help me pick" },
 ];
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -132,7 +130,7 @@ export function QuoteForm() {
           <select
             id="service"
             name="service"
-            defaultValue="junk-removal"
+            defaultValue="not-sure"
             className="mt-1.5 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-ink-900 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200"
           >
             {serviceOptions.map((opt) => (

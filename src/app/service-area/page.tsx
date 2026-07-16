@@ -9,13 +9,13 @@ import { imageSlots } from "@/lib/images";
 export const metadata: Metadata = {
   title: "Service Area — LA, Orange, San Bernardino & Riverside Counties | Martinez Junk Removal",
   description:
-    "Martinez Junk Removal is based in Chino, CA and offers same-day junk removal & dumpster rental across Los Angeles, Orange, San Bernardino & Riverside counties. See the full list of cities we serve.",
+    "Martinez Junk Removal is based in Chino, CA and offers same-day dumpster rental delivery across Los Angeles, Orange, San Bernardino & Riverside counties. See the full list of cities we serve.",
   alternates: { canonical: "/service-area" },
 };
 
 const countyBlurbs: Record<string, string> = {
   "Los Angeles County":
-    "From Pasadena and Glendale to Whittier and Torrance, we're a regular on job sites across LA County — furniture removal, cleanouts, and dumpster drop-offs scheduled around your day.",
+    "From Pasadena and Glendale to Whittier and Torrance, we're a regular on job sites across LA County — dumpster drop-offs scheduled around your day.",
   "Orange County":
     "Anaheim, Irvine, Orange, and the rest of Orange County get the same flat-rate, no-hidden-fees service our Inland Empire customers rely on.",
   "San Bernardino County":
@@ -31,7 +31,7 @@ export default function ServiceAreaPage() {
         icon="map"
         image={imageSlots.heroServiceArea}
         title="Serving the Inland Empire, LA & Orange County"
-        subtitle={`Based in ${business.city}, CA, Martinez Junk Removal offers same-day junk removal and dumpster rental across ${business.serviceCounties.length} counties — ${business.serviceCounties.join(", ")}.`}
+        subtitle={`Based in ${business.city}, CA, Martinez Junk Removal offers same-day dumpster rental delivery across ${business.serviceCounties.length} counties — ${business.serviceCounties.join(", ")}.`}
       >
         <div className="flex flex-wrap gap-3">
           <PrimaryCta>Get a Free Quote</PrimaryCta>
@@ -44,10 +44,10 @@ export default function ServiceAreaPage() {
           Four Counties, One Reliable Crew
         </h2>
         <p className="mt-2 max-w-3xl text-ink-600">
-          Searching &ldquo;junk removal near me&rdquo;? Martinez Junk Removal is based right in{" "}
+          Searching &ldquo;dumpster rental near me&rdquo;? Martinez Junk Removal is based right in{" "}
           {business.city}, {business.state}, and our trucks are on the road daily across the{" "}
-          {business.serviceCounties.length} counties below. Same-day service is available in most
-          areas — call or text a photo for the fastest quote.
+          {business.serviceCounties.length} counties below. Same-day delivery is available in most
+          areas — call or text a photo of the job for the fastest quote.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {business.serviceCounties.map((county) => (
@@ -90,9 +90,10 @@ export default function ServiceAreaPage() {
               Not Sure If We Cover Your Address?
             </h2>
             <p className="mt-3 text-ink-600">
-              Same-day junk removal and dumpster delivery is available across most of our service
-              area — {business.hours.toLowerCase()}. Give us a call, send a text, or request a
-              free quote and we&apos;ll confirm availability for your address right away.
+              Same-day dumpster delivery is available across most of our service area, open{" "}
+              {business.hoursDisplay} ({business.hoursClosed.toLowerCase()}). Give us a call, send
+              a text, or request a free quote and we&apos;ll confirm availability for your address
+              right away.
             </p>
           </div>
           <PhotoQuoteCallout />
