@@ -58,17 +58,19 @@ export function PlaceholderBlock({
   icon = "truck",
   className = "",
   tone = "brand",
+  watermark = "Martinez Junk Removal",
 }: {
   label?: string;
   alt: string;
   icon?: IconName;
   className?: string;
   tone?: "brand" | "ink";
+  watermark?: string | false;
 }) {
   const gradient =
     tone === "brand"
-      ? "from-brand-800 via-brand-700 to-ink-900"
-      : "from-ink-800 via-ink-900 to-brand-950";
+      ? "from-brand-950 via-brand-800 to-ink-950"
+      : "from-ink-950 via-ink-800 to-brand-950";
 
   return (
     <div
@@ -76,20 +78,34 @@ export function PlaceholderBlock({
       aria-label={alt}
       className={`relative flex flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-br ${gradient} text-brand-100 ${className}`}
     >
+      {/* Subtle diagonal texture */}
       <div
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage:
             "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 1px, transparent 14px)",
         }}
         aria-hidden="true"
       />
+
+      {/* Large low-opacity watermark icon, bleeding off the corner */}
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1"
+        className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-40 text-white/[0.06] sm:h-56 sm:w-56"
+        aria-hidden="true"
+      >
+        {icons[icon]}
+      </svg>
+
       <svg
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.5"
-        className="relative h-10 w-10 shrink-0 sm:h-12 sm:w-12"
+        className="relative h-10 w-10 shrink-0 text-safety-400 sm:h-12 sm:w-12"
         aria-hidden="true"
       >
         {icons[icon]}
@@ -97,6 +113,12 @@ export function PlaceholderBlock({
       {label ? (
         <span className="relative px-4 text-center text-xs font-medium uppercase tracking-wide text-brand-100/80 sm:text-sm">
           {label}
+        </span>
+      ) : null}
+
+      {watermark ? (
+        <span className="absolute bottom-3 right-4 font-heading text-[0.65rem] font-semibold uppercase tracking-widest text-white/20 sm:text-xs">
+          {watermark}
         </span>
       ) : null}
     </div>

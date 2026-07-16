@@ -5,6 +5,8 @@ import { PhotoQuoteCallout } from "@/components/PhotoQuoteCallout";
 import { DumpsterCard } from "@/components/DumpsterCard";
 import { ReviewCard } from "@/components/ReviewCard";
 import { FaqAccordion } from "@/components/FaqAccordion";
+import { GalleryGrid } from "@/components/GalleryGrid";
+import { Reveal } from "@/components/Reveal";
 import { business, dumpsters, fees, faqs } from "@/lib/business";
 import { getFeaturedReviews } from "@/lib/reviews";
 import { imageSlots } from "@/lib/images";
@@ -53,7 +55,7 @@ export default function DumpsterRentalPage() {
         </p>
       </PageHero>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <Reveal as="section" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">Dumpster Sizes &amp; Pricing</h2>
         <p className="mt-3 max-w-3xl text-ink-600">
           Heavy material like concrete, dirt, asphalt, grass, and tile goes in the{" "}
@@ -68,36 +70,46 @@ export default function DumpsterRentalPage() {
         <p className="mt-6 text-sm text-ink-500">
           Prices vary by location and material — get a free quote for your exact price.
         </p>
-      </section>
+      </Reveal>
 
-      <section className="bg-ink-50 py-16">
+      <Reveal as="section" className="bg-ink-50 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">Rates &amp; Fees</h2>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-wide text-ink-400">Rental Period</p>
-              <p className="mt-2 font-heading text-lg font-bold text-ink-900">{fees.rentalPeriod} included</p>
-            </div>
-            <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-wide text-ink-400">Extra Days</p>
-              <p className="mt-2 font-heading text-lg font-bold text-ink-900">${fees.extraDayFee}/day</p>
-            </div>
-            <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-wide text-ink-400">Overweight Fee</p>
-              <p className="mt-2 font-heading text-lg font-bold text-ink-900">
-                ${fees.overweightFeePerTon}/ton over limit
-              </p>
-              <p className="mt-1 text-xs text-ink-500">Applies to the 20- &amp; 40-yard trash dumpsters</p>
-            </div>
-            <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-wide text-ink-400">Payments</p>
-              <p className="mt-2 font-heading text-lg font-bold text-ink-900">{business.payments.join(", ")}</p>
-            </div>
+          <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">Dumpsters in Action</h2>
+          <p className="mt-2 max-w-2xl text-ink-600">
+            Real drop-offs and stock photos of the work — driveways, job sites, and clean-up-ready bins.
+          </p>
+          <div className="mt-8">
+            <GalleryGrid />
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <Reveal as="section" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">Rates &amp; Fees</h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-wide text-ink-400">Rental Period</p>
+            <p className="mt-2 font-heading text-lg font-bold text-ink-900">{fees.rentalPeriod} included</p>
+          </div>
+          <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-wide text-ink-400">Extra Days</p>
+            <p className="mt-2 font-heading text-lg font-bold text-ink-900">${fees.extraDayFee}/day</p>
+          </div>
+          <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-wide text-ink-400">Overweight Fee</p>
+            <p className="mt-2 font-heading text-lg font-bold text-ink-900">
+              ${fees.overweightFeePerTon}/ton over limit
+            </p>
+            <p className="mt-1 text-xs text-ink-500">Applies to the 20- &amp; 40-yard trash dumpsters</p>
+          </div>
+          <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-wide text-ink-400">Payments</p>
+            <p className="mt-2 font-heading text-lg font-bold text-ink-900">{business.payments.join(", ")}</p>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal as="section" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">
           What Can &amp; Can&apos;t Go In the Dumpster
         </h2>
@@ -126,9 +138,9 @@ export default function DumpsterRentalPage() {
             <p className="mt-3 text-xs text-ink-600">When in doubt, call or text — we&apos;ll let you know.</p>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-3xl px-4 py-4 sm:px-6">
+      <Reveal as="section" className="mx-auto max-w-3xl px-4 py-4 sm:px-6">
         <p className="text-center text-ink-600">
           Not sure which size fits your project? Call or text a couple photos of the job and we&apos;ll
           recommend the right bin.
@@ -136,9 +148,9 @@ export default function DumpsterRentalPage() {
         <div className="mt-6">
           <PhotoQuoteCallout />
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-ink-50 py-16">
+      <Reveal as="section" className="bg-ink-50 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="text-2xl font-bold text-ink-900 sm:text-3xl">
             ⭐ {business.googleRating.value.toFixed(1)} on Google · {business.yelpRating.value.toFixed(1)} on Yelp
@@ -150,16 +162,16 @@ export default function DumpsterRentalPage() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+      <Reveal as="section" className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <h2 className="text-2xl font-bold text-ink-900 sm:text-3xl">Dumpster Rental FAQs</h2>
         <div className="mt-8">
           <FaqAccordion items={dumpsterFaqs} />
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-brand-900 py-16 text-white">
+      <Reveal as="section" className="bg-brand-900 py-16 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="text-3xl font-bold sm:text-4xl">Ready to Book a Bin?</h2>
           <p className="mt-3 text-lg text-brand-100">
@@ -170,7 +182,7 @@ export default function DumpsterRentalPage() {
             <CallButton className="bg-white text-ink-900 hover:bg-brand-50" />
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

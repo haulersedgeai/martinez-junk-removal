@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { PrimaryCta, CallButton } from "@/components/Buttons";
 import { ReviewCard } from "@/components/ReviewCard";
-import { imageSlots } from "@/lib/images";
+import { imageSlots, aboutActionImage } from "@/lib/images";
+import { business } from "@/lib/business";
 import { getFeaturedReviews } from "@/lib/reviews";
 
 export const metadata: Metadata = {
@@ -68,6 +70,28 @@ export default function AboutPage() {
             simple as the drop-off itself. Se habla español — Mario and the team are
             proud to serve the area&apos;s Spanish-speaking families too.
           </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 overflow-hidden rounded-2xl border border-ink-100 bg-brand-50 shadow-sm sm:grid-cols-[2fr_3fr]">
+          <div className="relative h-48 w-full sm:h-full sm:min-h-[220px]">
+            <Image
+              src={aboutActionImage.path}
+              alt={aboutActionImage.alt}
+              fill
+              sizes="(min-width: 640px) 40vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <blockquote className="flex flex-col justify-center p-6 sm:p-8">
+            <p className="font-heading text-xl font-medium leading-snug text-ink-900 sm:text-2xl">
+              &ldquo;I&apos;m a dumpster rental specialist and I LOVE what I do. I&apos;ve been
+              serving the LA, Orange County and Inland Empire area for years — and customer
+              service is our number one priority.&rdquo;
+            </p>
+            <footer className="mt-4 text-sm font-semibold text-brand-700">
+              — {business.owner}, Owner
+            </footer>
+          </blockquote>
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-3">

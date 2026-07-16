@@ -1,11 +1,12 @@
 import { business, totalReviewCount } from "@/lib/business";
 
 const items = [
-  `⭐ ${business.googleRating.value.toFixed(1)} on Google`,
-  `${totalReviewCount} reviews across Google & Yelp`,
-  `Locally owned since ${business.founded}`,
+  `⭐ ${totalReviewCount} reviews (Google + Yelp)`,
+  `${business.googleRating.value.toFixed(1)} Google / ${business.yelpRating.value.toFixed(1)} Yelp`,
+  `${business.serviceCounties.length} counties served`,
+  `Since ${business.founded}`,
   "Same-day available",
-  "Flat rate, no hidden fees",
+  "Se habla español",
 ];
 
 export function TrustBar() {

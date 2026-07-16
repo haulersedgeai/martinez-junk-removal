@@ -1,14 +1,13 @@
-// Placeholder image slot map.
+// Central image slot map. Each slot is either a real/stock "photo" (rendered
+// with next/image) or a "placeholder" (rendered as a branded PlaceholderBlock
+// panel — never a broken <img>, never an empty box).
 //
-// Real job photos aren't available yet, so every visual slot renders as a
-// labeled gradient block (see <PlaceholderBlock />) instead of a hotlinked
-// stock photo. To swap in a real photo later:
-//   1. Drop the file in /public/images/ using the `file` name below.
-//   2. Change the slot's `kind` to "photo".
-//   3. Render with next/image using `path` + `alt` instead of PlaceholderBlock.
-//
-// Keeping every slot listed here (rather than scattering alt text across
-// pages) means a future photo swap is a one-line edit per slot.
+// To swap in a real photo later (e.g. the client's own Yelp/Instagram
+// photos — see public/images/real/README.md):
+//   1. Drop the file in /public/images/.
+//   2. Point the slot's `file`/`path` at it and set `kind` to "photo".
+// Every component that consumes these slots (PageHero, GalleryGrid,
+// DumpsterCard) already branches on `kind`, so that's the only change needed.
 
 export type ImageSlot = {
   file: string;
@@ -18,28 +17,30 @@ export type ImageSlot = {
 };
 
 export const imageSlots = {
+  // Real photo from the client's old site — an actual Martinez Junk Removal
+  // roll-off, branded and on the job. Reused for both hero slots below.
   heroHome: {
     file: "hero-home.jpg",
     path: "/images/hero-home.jpg",
-    alt: "Clean roll-off dumpster delivered by Martinez Junk Removal in Chino, California",
-    kind: "placeholder",
+    alt: "Martinez Junk Removal roll-off dumpster staged for delivery on a residential street in Chino, CA",
+    kind: "photo",
   },
   heroDumpsterRental: {
-    file: "hero-dumpster-rental.jpg",
-    path: "/images/hero-dumpster-rental.jpg",
-    alt: "Clean roll-off dumpster dropped off in a driveway",
-    kind: "placeholder",
+    file: "hero-home.jpg",
+    path: "/images/hero-home.jpg",
+    alt: "Martinez Junk Removal roll-off dumpster ready for delivery",
+    kind: "photo",
   },
   heroAbout: {
     file: "hero-about.jpg",
     path: "/images/hero-about.jpg",
-    alt: "Mario Martinez and crew, owners of Martinez Junk Removal",
+    alt: "Martinez Junk Removal crew on a dumpster delivery",
     kind: "placeholder",
   },
   heroServiceArea: {
     file: "hero-service-area.jpg",
     path: "/images/hero-service-area.jpg",
-    alt: "Map-style graphic of the Inland Empire and Los Angeles service area",
+    alt: "Martinez Junk Removal dumpster truck serving the Inland Empire and LA area",
     kind: "placeholder",
   },
   heroContact: {
@@ -51,39 +52,86 @@ export const imageSlots = {
   heroReviews: {
     file: "hero-reviews.jpg",
     path: "/images/hero-reviews.jpg",
-    alt: "Happy customer shaking hands with a Martinez Junk Removal crew member",
+    alt: "A happy Martinez Junk Removal customer's driveway",
     kind: "placeholder",
   },
   heroFaq: {
     file: "hero-faq.jpg",
     path: "/images/hero-faq.jpg",
-    alt: "Crew member answering a customer question on site",
-    kind: "placeholder",
-  },
-  crewAction1: {
-    file: "crew-action-1.jpg",
-    path: "/images/crew-action-1.jpg",
-    alt: "Crew member loading a couch onto a truck",
-    kind: "placeholder",
-  },
-  crewAction2: {
-    file: "crew-action-2.jpg",
-    path: "/images/crew-action-2.jpg",
-    alt: "Crew member sweeping a cleared job site",
-    kind: "placeholder",
-  },
-  dumpsterOnSite: {
-    file: "dumpster-on-site.jpg",
-    path: "/images/dumpster-on-site.jpg",
-    alt: "Roll-off dumpster staged on a residential driveway during a remodel",
-    kind: "placeholder",
-  },
-  logoMark: {
-    file: "logo-mark.png",
-    path: "/images/logo-mark.png",
-    alt: "Martinez Junk Removal LLC logo",
+    alt: "Roll-off dumpster ready to answer your questions",
     kind: "placeholder",
   },
 } as const satisfies Record<string, ImageSlot>;
 
 export type ImageSlotKey = keyof typeof imageSlots;
+
+// "Dumpsters in action" gallery — src/app/page.tsx (home) and
+// src/app/dumpster-rental/page.tsx. Real/stock photos first, upgraded
+// placeholders fill out the grid until more real job photos are available.
+export const galleryImages: (ImageSlot & { caption: string })[] = [
+  {
+    file: "hero-home.jpg",
+    path: "/images/hero-home.jpg",
+    alt: "Martinez Junk Removal roll-off dumpster on delivery day",
+    kind: "photo",
+    caption: "Delivery day",
+  },
+  {
+    file: "gallery-action.jpg",
+    path: "/images/gallery-action.jpg",
+    alt: "Homeowners loading moving boxes into a roll-off dumpster in their driveway",
+    kind: "photo",
+    caption: "Loading the bin",
+  },
+  {
+    file: "gallery-loaded.jpg",
+    path: "/images/gallery-loaded.jpg",
+    alt: "Roll-off dumpster loaded with household debris, ready for pickup",
+    kind: "photo",
+    caption: "Ready for pickup",
+  },
+  {
+    file: "gallery-jobsite.jpg",
+    path: "/images/gallery-jobsite.jpg",
+    alt: "Roll-off dumpster staged on a job site during a remodel",
+    kind: "placeholder",
+    caption: "On the job site",
+  },
+  {
+    file: "gallery-clean-driveway.jpg",
+    path: "/images/gallery-clean-driveway.jpg",
+    alt: "Clean, empty driveway after dumpster pickup",
+    kind: "placeholder",
+    caption: "Clean driveway, pickup complete",
+  },
+] as const;
+
+// Per-size photo header on each DumpsterCard (10/20/40 yard).
+export const dumpsterImageSlots: Record<string, ImageSlot> = {
+  "10-yard": {
+    file: "dumpster-10-yard.jpg",
+    path: "/images/dumpster-10-yard.jpg",
+    alt: "10-yard roll-off dumpster for heavy debris like concrete, dirt, and tile",
+    kind: "placeholder",
+  },
+  "20-yard": {
+    file: "dumpster-20-yard.jpg",
+    path: "/images/dumpster-20-yard.jpg",
+    alt: "20-yard roll-off dumpster for household trash and general debris",
+    kind: "placeholder",
+  },
+  "40-yard": {
+    file: "dumpster-40-yard.jpg",
+    path: "/images/dumpster-40-yard.jpg",
+    alt: "40-yard roll-off dumpster for large trash and general debris jobs",
+    kind: "placeholder",
+  },
+};
+
+// About page — paired with Mario's pull-quote.
+export const aboutActionImage: ImageSlot = {
+  file: "hero-home.jpg",
+  path: "/images/hero-home.jpg",
+  alt: "A Martinez Junk Removal roll-off dumpster on delivery day",
+  kind: "photo",
+};

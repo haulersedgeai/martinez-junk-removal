@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { business, cities } from "@/lib/business";
+import { RatingBadges } from "@/components/RatingBadges";
 
 const quickLinks = [
   { href: "/dumpster-rental", label: "Dumpster Rental" },
@@ -22,6 +23,9 @@ export function SiteFooter() {
           <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-700/30 px-3 py-1 text-xs font-semibold text-brand-200">
             🇪🇸 Se habla español
           </p>
+          <div className="mt-4">
+            <RatingBadges tone="dark" />
+          </div>
         </div>
 
         <div>

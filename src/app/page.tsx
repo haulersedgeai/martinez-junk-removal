@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { PlaceholderBlock } from "@/components/PlaceholderBlock";
 import { PrimaryCta, CallButton } from "@/components/Buttons";
 import { TrustBar } from "@/components/TrustBar";
+import { RatingBadges } from "@/components/RatingBadges";
 import { ReviewCard } from "@/components/ReviewCard";
 import { DumpsterCard } from "@/components/DumpsterCard";
 import { FaqAccordion } from "@/components/FaqAccordion";
+import { GalleryGrid } from "@/components/GalleryGrid";
 import { PhotoQuoteCallout } from "@/components/PhotoQuoteCallout";
+import { Reveal } from "@/components/Reveal";
 import { business, dumpsters, faqs, cities, totalReviewCount } from "@/lib/business";
 import { getFeaturedReviews } from "@/lib/reviews";
 import { imageSlots } from "@/lib/images";
@@ -57,19 +60,36 @@ const homeReviews = getFeaturedReviews("dumpster", 6);
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-ink-900 text-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 md:py-20">
-          <div>
+      <section className="relative isolate min-h-[560px] overflow-hidden bg-ink-950 text-white sm:min-h-[620px] md:min-h-[680px]">
+        <Image
+          src={imageSlots.heroHome.path}
+          alt={imageSlots.heroHome.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[75%_center]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/85 to-brand-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
+
+        <div className="relative mx-auto flex min-h-[560px] max-w-6xl flex-col justify-center px-4 py-14 sm:min-h-[620px] sm:px-6 md:min-h-[680px] md:py-20">
+          <div className="max-w-xl">
             <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-brand-200">
               🇪🇸 Se habla español
             </p>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
               Roll-Off Dumpster Rental in Chino &amp; the Inland Empire
             </h1>
-            <p className="mt-4 max-w-xl text-lg text-ink-200">
+            <p className="mt-4 max-w-xl text-lg text-ink-100">
               Clean bins, flat-rate pricing, on-time drop-off &amp; pickup, and same-day
               availability. Serving Los Angeles, Orange, San Bernardino &amp; Riverside counties.
             </p>
+
+            <RatingBadges variant="compact" tone="dark" className="mt-6" />
+            <p className="mt-2 text-sm font-medium text-ink-200">
+              Same-day available · Se habla español · Since {business.founded}
+            </p>
+
             <div className="mt-8 flex flex-wrap gap-3">
               <PrimaryCta>Get a Free Quote</PrimaryCta>
               <CallButton className="bg-white text-ink-900 hover:bg-brand-50" />
@@ -81,13 +101,12 @@ export default function HomePage() {
               </a>
             </p>
           </div>
-          <PlaceholderBlock alt={imageSlots.heroHome.alt} icon="dumpster" className="h-64 w-full md:h-80" />
         </div>
       </section>
 
       <TrustBar />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <Reveal as="section" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">Why Martinez Junk Removal</h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {valueProps.map((prop) => (
@@ -97,9 +116,9 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-brand-900 py-16 text-white">
+      <Reveal as="section" className="bg-brand-900 py-16 text-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="font-heading text-2xl font-bold sm:text-3xl">How It Works</h2>
           <div className="mt-8 grid gap-8 sm:grid-cols-3">
@@ -114,9 +133,9 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <Reveal as="section" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">Dumpster Sizes &amp; Pricing</h2>
@@ -136,18 +155,27 @@ export default function HomePage() {
         <p className="mt-6 text-sm text-ink-500">
           Prices vary by location and material — get a free quote for your exact price.
         </p>
-      </section>
+      </Reveal>
 
-      <section className="bg-ink-50 py-16">
+      <Reveal as="section" className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+        <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">Dumpsters in Action</h2>
+        <p className="mt-2 max-w-2xl text-ink-600">
+          Real drop-offs and stock photos of the work — driveways, job sites, and clean-up-ready bins
+          across the Inland Empire.
+        </p>
+        <div className="mt-8">
+          <GalleryGrid />
+        </div>
+      </Reveal>
+
+      <Reveal as="section" className="bg-ink-50 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">
                 ⭐ {totalReviewCount} Reviews Across Google &amp; Yelp
               </h2>
-              <p className="mt-2 text-ink-600">
-                {business.googleRating.value.toFixed(1)} on Google · {business.yelpRating.value.toFixed(1)} on Yelp
-              </p>
+              <RatingBadges className="mt-4" />
             </div>
             <Link href="/reviews" className="text-sm font-semibold text-brand-700 hover:underline">
               Read all reviews →
@@ -159,9 +187,9 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <Reveal as="section" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-10 md:grid-cols-2 md:items-center">
           <div>
             <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">
@@ -192,9 +220,9 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-ink-50 py-16">
+      <Reveal as="section" className="bg-ink-50 py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h2 className="font-heading text-2xl font-bold text-ink-900 sm:text-3xl">
             Frequently Asked Questions
@@ -206,9 +234,9 @@ export default function HomePage() {
             More FAQs →
           </Link>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="bg-brand-900 py-16 text-white">
+      <Reveal as="section" className="bg-brand-900 py-16 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="font-heading text-3xl font-bold sm:text-4xl">Ready to Book a Bin?</h2>
           <p className="mt-3 text-lg text-brand-100">
@@ -222,7 +250,7 @@ export default function HomePage() {
             <PhotoQuoteCallout tone="dark" />
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PlaceholderBlock } from "@/components/PlaceholderBlock";
 import type { ImageSlot } from "@/lib/images";
 
@@ -31,7 +32,19 @@ export function PageHero({
           {subtitle ? <p className="mt-4 max-w-xl text-lg text-ink-200">{subtitle}</p> : null}
           {children ? <div className="mt-6">{children}</div> : null}
         </div>
-        <PlaceholderBlock alt={image.alt} icon={icon} className="h-56 w-full md:h-72" />
+        {image.kind === "photo" ? (
+          <div className="relative h-56 w-full overflow-hidden rounded-2xl md:h-72">
+            <Image
+              src={image.path}
+              alt={image.alt}
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <PlaceholderBlock alt={image.alt} icon={icon} className="h-56 w-full md:h-72" />
+        )}
       </div>
     </section>
   );

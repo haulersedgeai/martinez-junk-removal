@@ -40,8 +40,13 @@ export const business = {
   socials: {
     facebook: "https://www.facebook.com/profile.php?id=100046683292122",
     instagram: "https://www.instagram.com/martinez_junk_removal_/",
-    yelp: "https://www.yelp.com/biz/martinez-junk-removal-pomona",
+    // Active Yelp listing (52 reviews, 4.9★) — the old "martinez-junk-removal-pomona"
+    // listing is no longer the one in use.
+    yelp: "https://www.yelp.com/biz/martinez-dumpsters-pomona-2",
   },
+  // Client-provided Google Business Profile share link for "Martinez Dumpsters"
+  // (resolves to the Google knowledge panel/listing where reviews live).
+  googleReviewUrl: "https://share.google/7HgdQIefKiFe23BjF",
   domain: "martinezjunkremoval.net",
 } as const;
 

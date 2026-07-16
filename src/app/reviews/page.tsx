@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { PrimaryCta, CallButton } from "@/components/Buttons";
+import { RatingBadges } from "@/components/RatingBadges";
 import { ReviewsExplorer } from "@/components/ReviewsExplorer";
 import { business, totalReviewCount } from "@/lib/business";
 import { allReviews } from "@/lib/reviews";
@@ -42,12 +43,14 @@ export default function ReviewsPage() {
             Every review below is a real customer talking about real jobs — dumpster
             drop-offs, pickups, and more.
           </p>
+          <RatingBadges className="justify-center" />
           <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
             <a
-              href="#"
+              href={business.googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-800"
             >
-              {/* TODO: replace with direct Google Business Profile review link */}
               Read all reviews on Google →
             </a>
             <a

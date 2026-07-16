@@ -52,9 +52,9 @@ export const metadata: Metadata = {
     description:
       "Clean bins, flat-rate pricing, on-time drop-off & pickup, and same-day availability across LA, Orange, San Bernardino & Riverside counties.",
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  // favicon.ico, icon.png, apple-icon.png, and opengraph-image.jpg in
+  // src/app/ are Next.js file-convention metadata — no explicit icons/images
+  // fields needed here.
 };
 
 export const viewport: Viewport = {
