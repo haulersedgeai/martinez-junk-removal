@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Martinez Junk Removal",
   },
   description:
-    "Roll-off dumpster rental serving Chino and the Inland Empire — LA, Orange, San Bernardino & Riverside counties. Same-day dumpster rental, flat rate, no hidden fees. Se habla español. Call or text (562) 639-5747.",
+    "Roll-off dumpster rental serving Chino and the Inland Empire — LA, Orange, San Bernardino & Riverside counties. Same-day dumpster rental, upfront pricing. Se habla español. Call or text (562) 639-5747.",
   keywords: [
     "dumpster rental Chino",
     "roll off dumpster Inland Empire",
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     siteName: business.displayName,
     title: "Dumpster Rental in Chino, CA | Martinez Junk Removal",
     description:
-      "Clean bins, flat-rate pricing, on-time drop-off & pickup, and same-day availability across LA, Orange, San Bernardino & Riverside counties.",
+      "Clean bins, upfront pricing, on-time drop-off & pickup, and same-day availability across LA, Orange, San Bernardino & Riverside counties.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Dumpster Rental in Chino, CA | Martinez Junk Removal",
     description:
-      "Clean bins, flat-rate pricing, on-time drop-off & pickup, and same-day availability across LA, Orange, San Bernardino & Riverside counties.",
+      "Clean bins, upfront pricing, on-time drop-off & pickup, and same-day availability across LA, Orange, San Bernardino & Riverside counties.",
   },
   // favicon.ico, icon.png, apple-icon.png, and opengraph-image.jpg in
   // src/app/ are Next.js file-convention metadata — no explicit icons/images

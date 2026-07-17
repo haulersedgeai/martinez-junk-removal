@@ -162,7 +162,8 @@ export const faqs: Faq[] = [
   },
   {
     question: "How does pricing work?",
-    answer: "Flat rate, no hidden fees. The price we quote is the price you pay.",
+    answer:
+      "You get a clear quote up front based on the dumpster size and your location. The only add-ons are extra rental days ($45/day) and, on the 20- and 40-yard trash dumpsters, an overweight fee of $100 per ton over the limit. We tell you about any of these before you book — no surprises at pickup.",
   },
 ];
 

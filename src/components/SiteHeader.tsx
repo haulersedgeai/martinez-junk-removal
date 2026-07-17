@@ -3,16 +3,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { business } from "@/lib/business";
-import { CallButton, PrimaryCta } from "@/components/Buttons";
+import { CallButton, PhoneIcon, PrimaryCta } from "@/components/Buttons";
 
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/dumpster-rental", label: "Dumpster Rental" },
   { href: "/service-area", label: "Service Area" },
   { href: "/reviews", label: "Reviews" },
   { href: "/about", label: "About" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader() {
@@ -43,11 +40,17 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 md:flex">
+          <div className="hidden items-center gap-4 md:flex">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
               🇪🇸 Se habla español
             </span>
-            <CallButton className="px-4 py-2 text-sm" />
+            <a
+              href={`tel:${business.phoneTel}`}
+              className="flex items-center gap-1.5 text-sm font-medium text-ink-800 transition-colors hover:text-brand-700 hover:underline"
+            >
+              <PhoneIcon className="h-4 w-4" />
+              {business.phoneDisplay}
+            </a>
             <PrimaryCta className="px-4 py-2 text-sm">Get a Quote</PrimaryCta>
           </div>
 

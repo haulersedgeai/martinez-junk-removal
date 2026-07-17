@@ -17,7 +17,6 @@ export default function FaqPage() {
   return (
     <>
       <PageHero
-        icon="phone"
         image={imageSlots.heroFaq}
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about pricing, scheduling, and what we haul."

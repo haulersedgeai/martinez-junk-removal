@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { business, cities } from "@/lib/business";
 import { RatingBadges } from "@/components/RatingBadges";
+import { PrimaryCta } from "@/components/Buttons";
 
 const quickLinks = [
   { href: "/dumpster-rental", label: "Dumpster Rental" },
@@ -26,6 +27,9 @@ export function SiteFooter() {
           <div className="mt-4">
             <RatingBadges tone="dark" />
           </div>
+          <PrimaryCta href="/contact" className="mt-5 px-5 py-2.5 text-sm">
+            Get a Free Quote
+          </PrimaryCta>
         </div>
 
         <div>
@@ -45,11 +49,11 @@ export function SiteFooter() {
               </a>
             </li>
             <li className="text-ink-300">{business.city}, {business.state}</li>
-            <li className="text-ink-300">
+            <li className="pt-1 text-xs text-ink-400">
               {business.hoursDisplay} · {business.hoursClosed}
             </li>
-            <li className="text-ink-300">{business.sameDayNote}</li>
-            <li className="text-ink-400 text-xs">Accepts {business.payments.join(" · ")}</li>
+            <li className="text-xs text-ink-400">{business.sameDayNote}</li>
+            <li className="text-xs text-ink-400">Accepts {business.payments.join(" · ")}</li>
           </ul>
         </div>
 
@@ -101,9 +105,18 @@ export function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${business.displayName} on Yelp`}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-ink-800 hover:bg-brand-700"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-ink-800 text-sm font-bold text-white hover:bg-brand-700"
             >
-              <YelpIcon />
+              Y
+            </a>
+            <a
+              href={business.googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${business.displayName} on Google`}
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-ink-800 text-sm font-bold text-white hover:bg-brand-700"
+            >
+              G
             </a>
           </div>
         </div>
@@ -151,14 +164,6 @@ function InstagramIcon() {
       <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17" cy="7" r="1" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-function YelpIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-white" aria-hidden="true">
-      <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5.2l3.4 4.9-5.6 1.9L12 7.2h1zm-4.4 6.9l5.7-1.4-3 5.3-2.7-3.9zm9.6.6l-5.4 2.4 4.2 3.3 1.2-5.7z" />
     </svg>
   );
 }

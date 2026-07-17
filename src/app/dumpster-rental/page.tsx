@@ -14,7 +14,7 @@ import { imageSlots } from "@/lib/images";
 export const metadata: Metadata = {
   title: "Dumpster Rental in Chino, CA | Roll-Off Sizes & Pricing | Martinez Junk Removal",
   description:
-    "Roll-off dumpster rental in Chino & the Inland Empire — 10, 20 & 40-yard bins from $650. Flat rate, no hidden fees, on-time drop-off & pickup. Same-day availability across LA, Orange, San Bernardino & Riverside counties.",
+    "Roll-off dumpster rental in Chino & the Inland Empire — 10, 20 & 40-yard bins from $650. Upfront pricing, on-time drop-off & pickup. Same-day availability across LA, Orange, San Bernardino & Riverside counties.",
   alternates: { canonical: "/dumpster-rental" },
 };
 
@@ -38,9 +38,8 @@ export default function DumpsterRentalPage() {
       <PageHero
         eyebrow="Roll-Off Bins"
         title="Roll-Off Dumpster Rental in Chino & the Inland Empire"
-        subtitle="Clean bins, flat-rate pricing, on-time drop-off & pickup, and same-day availability across LA, Orange, San Bernardino & Riverside counties."
+        subtitle="Clean bins, upfront pricing, on-time drop-off & pickup, and same-day availability across LA, Orange, San Bernardino & Riverside counties."
         image={imageSlots.heroDumpsterRental}
-        icon="dumpster"
       >
         <div className="flex flex-wrap gap-3">
           <PrimaryCta>Get a Free Quote</PrimaryCta>
@@ -175,7 +174,7 @@ export default function DumpsterRentalPage() {
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="text-3xl font-bold sm:text-4xl">Ready to Book a Bin?</h2>
           <p className="mt-3 text-lg text-brand-100">
-            Get a fast, flat-rate dumpster quote today — same-day drop-off often available.
+            Get a fast, free dumpster quote today — same-day drop-off often available.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <PrimaryCta>Get a Free Quote</PrimaryCta>

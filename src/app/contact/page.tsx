@@ -11,20 +11,19 @@ import { imageSlots } from "@/lib/images";
 export const metadata: Metadata = {
   title: "Contact Us — Get a Free Dumpster Quote | Martinez Junk Removal",
   description:
-    "Get a free, flat-rate dumpster rental quote in Chino & the Inland Empire. Call or text (562) 639-5747 — se habla español.",
+    "Get a free dumpster rental quote in Chino & the Inland Empire. Call or text (562) 639-5747 — se habla español.",
   alternates: { canonical: "/contact" },
 };
 
-const contactReview = getFeaturedReviews("dumpster", 1)[0];
+const contactReviews = getFeaturedReviews("dumpster", 2);
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
-        icon="phone"
         image={imageSlots.heroContact}
         eyebrow="Se habla español"
-        title="Get a Free, Flat-Rate Quote"
+        title="Get a Free Quote"
         subtitle="Fill out the form below, or call/text us directly — often same-day service across Los Angeles, Orange, San Bernardino & Riverside counties."
       >
         <div className="flex flex-wrap gap-3">
@@ -45,10 +44,16 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 self-start">
             <PhotoQuoteCallout />
 
-            {contactReview ? <ReviewCard review={contactReview} /> : null}
+            {contactReviews.length > 0 ? (
+              <div className="space-y-4">
+                {contactReviews.map((review) => (
+                  <ReviewCard key={review.id} review={review} />
+                ))}
+              </div>
+            ) : null}
 
             <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
               <h2 className="font-heading text-lg font-bold text-ink-900">Prefer to Talk?</h2>

@@ -38,6 +38,18 @@ export function CallButton({ className = "", children }: { className?: string; c
   );
 }
 
+export function PhoneIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
+      <path
+        d="M6.5 3h3l1.5 4.5-2 1.5a11 11 0 005 5l1.5-2L20 13.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function TextButton({ className = "", children }: { className?: string; children?: React.ReactNode }) {
   return (
     <a
@@ -47,18 +59,6 @@ export function TextButton({ className = "", children }: { className?: string; c
       <CameraIcon />
       {children ?? "Text a Photo"}
     </a>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
-      <path
-        d="M6.5 3h3l1.5 4.5-2 1.5a11 11 0 005 5l1.5-2L20 13.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }
 

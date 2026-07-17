@@ -17,7 +17,6 @@ export default function ReviewsPage() {
   return (
     <>
       <PageHero
-        icon="sparkles"
         image={imageSlots.heroReviews}
         title={`${totalReviewCount} Reviews Across Google & Yelp`}
         subtitle={`${business.googleRating.value.toFixed(1)} on Google · ${business.yelpRating.value.toFixed(1)} on Yelp — here's what real customers across the Inland Empire and LA have to say.`}
@@ -75,7 +74,7 @@ export default function ReviewsPage() {
             Ready to Join Our Happy Customers?
           </h2>
           <p className="mt-3 text-lg text-brand-100">
-            Get a fast, flat-rate dumpster quote today — same-day drop-off often available.
+            Get a fast, free dumpster quote today — same-day drop-off often available.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <PrimaryCta>Get a Free Quote</PrimaryCta>

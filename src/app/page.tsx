@@ -17,14 +17,14 @@ import { imageSlots } from "@/lib/images";
 export const metadata: Metadata = {
   title: "Dumpster Rental in Chino, CA | Martinez Junk Removal",
   description:
-    "Roll-off dumpster rental in Chino & the Inland Empire — same-day availability, flat-rate pricing, on-time drop-off & pickup. Serving LA, Orange, San Bernardino & Riverside counties. Se habla español.",
+    "Roll-off dumpster rental in Chino & the Inland Empire — same-day availability, upfront pricing, on-time drop-off & pickup. Serving LA, Orange, San Bernardino & Riverside counties. Se habla español.",
   alternates: { canonical: "/" },
 };
 
 const valueProps = [
   {
-    title: "Flat-rate pricing, no surprises",
-    body: "The price we quote is the price you pay. Contractors specifically praise our no-hidden-fees policy after pickup.",
+    title: "Upfront pricing",
+    body: "You'll get a clear quote before you book. The only add-ons are extra days ($45/day) and overweight fees ($100/ton over the limit) — and we tell you about them up front, never at pickup.",
   },
   {
     title: "On time, every time",
@@ -51,7 +51,7 @@ const steps = [
   },
   {
     title: "We drop off, you fill, we pick up",
-    body: "Clean bin, on-time drop-off and pickup, flat rate — no hidden fees.",
+    body: "Clean bin, on-time drop-off and pickup, and a clear quote up front.",
   },
 ];
 
@@ -81,7 +81,7 @@ export default function HomePage() {
               Roll-Off Dumpster Rental in Chino &amp; the Inland Empire
             </h1>
             <p className="mt-4 max-w-xl text-lg text-ink-100">
-              Clean bins, flat-rate pricing, on-time drop-off &amp; pickup, and same-day
+              Clean bins, upfront pricing, on-time drop-off &amp; pickup, and same-day
               availability. Serving Los Angeles, Orange, San Bernardino &amp; Riverside counties.
             </p>
 
@@ -240,7 +240,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="font-heading text-3xl font-bold sm:text-4xl">Ready to Book a Bin?</h2>
           <p className="mt-3 text-lg text-brand-100">
-            Get a fast, flat-rate quote today — same-day drop-off often available.
+            Get a fast, free quote today — same-day drop-off often available.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <PrimaryCta>Get a Free Quote</PrimaryCta>

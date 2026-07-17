@@ -20,8 +20,8 @@ const valueProps = [
     body: "We show up when we say we will, communicate clearly, and respect your property from start to finish.",
   },
   {
-    title: "Fair, flat-rate pricing",
-    body: "The price we quote is the price you pay — no hidden fees added after the truck is loaded.",
+    title: "Fair, upfront pricing",
+    body: "You'll get a clear quote before you book — the only add-ons (extra days, overweight fees) are always disclosed up front.",
   },
   {
     title: "Clean bins, every drop-off",
@@ -38,7 +38,6 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        icon="home"
         image={imageSlots.heroAbout}
         title="Meet Mario Martinez"
         subtitle="A locally owned, family-run crew built on hard work, honesty, and taking care of our neighbors."
@@ -59,8 +58,8 @@ export default function AboutPage() {
           </p>
           <p>
             Customer service comes first, every time. That means clear communication
-            from the first call or text, drivers that show up on time, fair flat-rate
-            pricing with no surprise fees, and a clean bin dropped exactly where you
+            from the first call or text, drivers that show up on time, fair, upfront
+            pricing, and a clean bin dropped exactly where you
             need it. Whether it&apos;s a driveway remodel, a construction site, or a
             weekend cleanout, the goal never changes: make it easy, make it clean, and
             make it affordable.
@@ -116,7 +115,7 @@ export default function AboutPage() {
             Let&apos;s Get Your Space Cleared Out
           </h2>
           <p className="mt-3 text-lg text-brand-100">
-            Call or text Mario and the crew today for a fast, flat-rate quote.
+            Call or text Mario and the crew today for a fast, free quote.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <PrimaryCta>Get a Free Quote</PrimaryCta>

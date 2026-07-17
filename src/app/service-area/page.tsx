@@ -17,18 +17,17 @@ const countyBlurbs: Record<string, string> = {
   "Los Angeles County":
     "From Pasadena and Glendale to Whittier and Torrance, we're a regular on job sites across LA County — dumpster drop-offs scheduled around your day.",
   "Orange County":
-    "Anaheim, Irvine, Orange, and the rest of Orange County get the same flat-rate, no-hidden-fees service our Inland Empire customers rely on.",
+    "Anaheim, Irvine, Orange, and the rest of Orange County get the same reliable, upfront service our Inland Empire customers rely on.",
   "San Bernardino County":
     "Home base. Chino, Chino Hills, Rancho Cucamonga, Ontario and neighboring San Bernardino County communities get our fastest response times and most same-day availability.",
   "Riverside County":
-    "Corona, Riverside, Eastvale, Norco and the surrounding cities are a short drive from our Chino yard — same flat rate, same clean crew.",
+    "Corona, Riverside, Eastvale, Norco and the surrounding cities are a short drive from our Chino yard — same upfront pricing, same clean crew.",
 };
 
 export default function ServiceAreaPage() {
   return (
     <>
       <PageHero
-        icon="map"
         image={imageSlots.heroServiceArea}
         title="Serving the Inland Empire, LA & Orange County"
         subtitle={`Based in ${business.city}, CA, Martinez Junk Removal offers same-day dumpster rental delivery across ${business.serviceCounties.length} counties — ${business.serviceCounties.join(", ")}.`}
@@ -104,7 +103,7 @@ export default function ServiceAreaPage() {
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="font-heading text-3xl font-bold sm:text-4xl">Ready to Clear It Out?</h2>
           <p className="mt-3 text-lg text-brand-100">
-            Get a fast, flat-rate quote today — same-day service often available across LA,
+            Get a fast, free quote today — same-day service often available across LA,
             Orange, San Bernardino &amp; Riverside counties.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
