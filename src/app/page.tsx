@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PrimaryCta, CallButton } from "@/components/Buttons";
+import { MexicanFlag } from "@/components/MexicanFlag";
 import { TrustBar } from "@/components/TrustBar";
 import { RatingBadges } from "@/components/RatingBadges";
 import { ReviewCard } from "@/components/ReviewCard";
@@ -75,7 +76,7 @@ export default function HomePage() {
         <div className="relative mx-auto flex min-h-[560px] max-w-6xl flex-col justify-center px-4 py-14 sm:min-h-[620px] sm:px-6 md:min-h-[680px] md:py-20">
           <div className="max-w-xl">
             <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-brand-200">
-              🇪🇸 Se habla español
+              <MexicanFlag className="h-[1em] w-auto mr-1.5" /> Se habla español
             </p>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
               Roll-Off Dumpster Rental in Chino &amp; the Inland Empire

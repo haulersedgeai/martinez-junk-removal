@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { business, cities } from "@/lib/business";
+import { MexicanFlag } from "@/components/MexicanFlag";
 import { RatingBadges } from "@/components/RatingBadges";
 import { PrimaryCta } from "@/components/Buttons";
 
@@ -22,7 +23,7 @@ export function SiteFooter() {
             Locally owned &amp; operated by {business.owner} since {business.founded}.
           </p>
           <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-700/30 px-3 py-1 text-xs font-semibold text-brand-200">
-            🇪🇸 Se habla español
+            <MexicanFlag className="h-[1em] w-auto mr-1.5" /> Se habla español
           </p>
           <div className="mt-4">
             <RatingBadges tone="dark" />

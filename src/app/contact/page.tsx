@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MexicanFlag } from "@/components/MexicanFlag";
 import { PageHero } from "@/components/PageHero";
 import { CallButton, TextButton } from "@/components/Buttons";
 import { PhotoQuoteCallout } from "@/components/PhotoQuoteCallout";
@@ -85,7 +86,7 @@ export default function ContactPage() {
                 Accepts {business.payments.join(" · ")}
               </p>
               <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
-                🇪🇸 Se habla español
+                <MexicanFlag className="h-[1em] w-auto mr-1.5" /> Se habla español
               </p>
             </div>
           </div>

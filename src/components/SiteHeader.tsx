@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { business } from "@/lib/business";
 import { CallButton, PhoneIcon, PrimaryCta } from "@/components/Buttons";
+import { MexicanFlag } from "@/components/MexicanFlag";
 
 const navLinks = [
   { href: "/dumpster-rental", label: "Dumpster Rental" },
@@ -42,7 +43,7 @@ export function SiteHeader() {
 
           <div className="hidden items-center gap-4 md:flex">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
-              🇪🇸 Se habla español
+              <MexicanFlag className="h-[1em] w-auto mr-1.5" /> Se habla español
             </span>
             <a
               href={`tel:${business.phoneTel}`}
@@ -87,7 +88,7 @@ export function SiteHeader() {
               ))}
             </nav>
             <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
-              🇪🇸 Se habla español
+              <MexicanFlag className="h-[1em] w-auto mr-1.5" /> Se habla español
             </span>
           </div>
         ) : null}

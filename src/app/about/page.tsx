@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { MexicanFlag } from "@/components/MexicanFlag";
 import { PageHero } from "@/components/PageHero";
 import { PrimaryCta, CallButton } from "@/components/Buttons";
 import { ReviewCard } from "@/components/ReviewCard";
@@ -43,7 +44,7 @@ export default function AboutPage() {
         subtitle="A locally owned, family-run crew built on hard work, honesty, and taking care of our neighbors."
       >
         <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
-          🇪🇸 Se habla español
+          <MexicanFlag className="h-[1em] w-auto mr-1.5" /> Se habla español
         </span>
       </PageHero>
 
