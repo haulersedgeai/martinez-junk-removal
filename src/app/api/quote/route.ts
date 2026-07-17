@@ -95,8 +95,7 @@ export async function POST(request: Request) {
 
   try {
     const { error } = await resend.emails.send({
-      // TODO: switch to a verified domain sender (e.g. quotes@martinezjunkremoval.net) once the sending domain is verified in Resend.
-      from: `${business.name} Website <onboarding@resend.dev>`,
+      from: "Martinez Junk Removal <quotes@martinezjunkremoval.net>",
       to: business.email,
       replyTo: email || undefined,
       subject: `New quote request — ${name} (${cityZip})`,
