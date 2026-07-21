@@ -135,3 +135,22 @@ export const aboutActionImage: ImageSlot = {
   alt: "A Martinez Junk Removal roll-off dumpster on delivery day",
   kind: "photo",
 };
+
+// Real owner photos — Mario Martinez on a job site. mario-owner-jobsite-1 is
+// the solo lead shot (About page "Meet Mario" + home page trust strip);
+// mario-owner-jobsite-2 is the secondary shot with the crew and truck
+// (About page, further down).
+export const marioOwnerImages: Record<"solo" | "withCrew", ImageSlot> = {
+  solo: {
+    file: "mario-owner-jobsite-1.jpg",
+    path: "/images/real/mario-owner-jobsite-1.jpg",
+    alt: "Mario Martinez, owner of Martinez Junk Removal, smiling next to a roll-off dumpster on a job site in Chino, California.",
+    kind: "photo",
+  },
+  withCrew: {
+    file: "mario-owner-jobsite-2.jpg",
+    path: "/images/real/mario-owner-jobsite-2.jpg",
+    alt: "Mario Martinez, owner of Martinez Junk Removal, with a crew member in front of the company's roll-off dumpster truck in Chino, California.",
+    kind: "photo",
+  },
+};

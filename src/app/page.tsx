@@ -13,7 +13,7 @@ import { PhotoQuoteCallout } from "@/components/PhotoQuoteCallout";
 import { Reveal } from "@/components/Reveal";
 import { business, dumpsters, faqs, cities, totalReviewCount } from "@/lib/business";
 import { getFeaturedReviews } from "@/lib/reviews";
-import { imageSlots } from "@/lib/images";
+import { imageSlots, marioOwnerImages } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Dumpster Rental in Chino, CA | Martinez Junk Removal",
@@ -186,6 +186,32 @@ export default function HomePage() {
             {homeReviews.map((review) => (
               <ReviewCard key={review.id} review={review} />
             ))}
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal as="section" className="bg-brand-50 py-14">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 text-center sm:px-6 md:flex-row md:text-left">
+          <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl border-2 border-brand-200 shadow-md shadow-brand-900/10 sm:h-32 sm:w-32">
+            <Image
+              src={marioOwnerImages.solo.path}
+              alt={marioOwnerImages.solo.alt}
+              fill
+              sizes="128px"
+              className="object-cover object-[78%_38%]"
+            />
+          </div>
+          <div className="flex-1">
+            <p className="font-heading text-lg font-medium leading-snug text-ink-900">
+              &ldquo;Customer service is our number one priority — on every job, every time.&rdquo;
+            </p>
+            <p className="mt-2 text-sm font-semibold text-brand-700">
+              {business.owner} · Owner, {business.displayName}
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-wrap items-center justify-center gap-3">
+            <CallButton className="bg-brand-700 text-white hover:bg-brand-800" />
+            <PrimaryCta>Get a Free Quote</PrimaryCta>
           </div>
         </div>
       </Reveal>

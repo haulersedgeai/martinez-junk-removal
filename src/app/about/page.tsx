@@ -4,7 +4,7 @@ import { MexicanFlag } from "@/components/MexicanFlag";
 import { PageHero } from "@/components/PageHero";
 import { PrimaryCta, CallButton } from "@/components/Buttons";
 import { ReviewCard } from "@/components/ReviewCard";
-import { imageSlots, aboutActionImage } from "@/lib/images";
+import { imageSlots, marioOwnerImages } from "@/lib/images";
 import { business } from "@/lib/business";
 import { getFeaturedReviews } from "@/lib/reviews";
 
@@ -72,24 +72,27 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 overflow-hidden rounded-2xl border border-ink-100 bg-brand-50 shadow-sm sm:grid-cols-[2fr_3fr]">
-          <div className="relative h-48 w-full sm:h-full sm:min-h-[220px]">
+        <div className="mt-10 grid gap-8 md:grid-cols-2 md:items-center md:gap-10">
+          <div className="relative order-1 mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border-2 border-brand-200 shadow-lg shadow-brand-900/10 md:mx-0 md:max-w-none">
             <Image
-              src={aboutActionImage.path}
-              alt={aboutActionImage.alt}
+              src={marioOwnerImages.solo.path}
+              alt={marioOwnerImages.solo.alt}
               fill
-              sizes="(min-width: 640px) 40vw, 100vw"
-              className="object-cover"
+              sizes="(min-width: 768px) 40vw, 90vw"
+              className="object-cover object-[78%_38%]"
             />
           </div>
-          <blockquote className="flex flex-col justify-center p-6 sm:p-8">
+          <blockquote className="order-2 flex flex-col justify-center">
             <p className="font-heading text-xl font-medium leading-snug text-ink-900 sm:text-2xl">
               &ldquo;I&apos;m a dumpster rental specialist and I LOVE what I do. I&apos;ve been
               serving the LA, Orange County and Inland Empire area for years — and customer
               service is our number one priority.&rdquo;
             </p>
-            <footer className="mt-4 text-sm font-semibold text-brand-700">
-              — {business.owner}, Owner
+            <footer className="mt-4">
+              <p className="text-sm font-semibold text-brand-700">{business.owner}</p>
+              <p className="text-sm text-ink-500">
+                Owner, {business.displayName} — serving the Inland Empire since {business.founded}
+              </p>
             </footer>
           </blockquote>
         </div>
@@ -101,6 +104,22 @@ export default function AboutPage() {
               <p className="mt-2 text-sm text-ink-600">{prop.body}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 flex flex-col items-center">
+          <div className="overflow-hidden rounded-2xl border-2 border-brand-200 shadow-lg shadow-brand-900/10">
+            <Image
+              src={marioOwnerImages.withCrew.path}
+              alt={marioOwnerImages.withCrew.alt}
+              width={1143}
+              height={1800}
+              sizes="(min-width: 640px) 320px, 80vw"
+              className="h-auto w-full max-w-xs object-cover sm:max-w-sm"
+            />
+          </div>
+          <p className="mt-3 text-sm text-ink-500">
+            Mario (right) with the crew and the Martinez Junk Removal truck.
+          </p>
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">

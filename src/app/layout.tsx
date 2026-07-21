@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { business } from "@/lib/business";
 import { allReviews } from "@/lib/reviews";
+import { marioOwnerImages } from "@/lib/images";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -78,6 +79,12 @@ export default function RootLayout({
     telephone: business.phoneTel,
     email: business.email,
     foundingDate: business.foundingDate,
+    founder: {
+      "@type": "Person",
+      name: business.owner,
+      image: `${siteUrl}${marioOwnerImages.solo.path}`,
+    },
+    image: [`${siteUrl}${marioOwnerImages.solo.path}`, `${siteUrl}${marioOwnerImages.withCrew.path}`],
     priceRange: "$$",
     paymentAccepted: business.payments,
     knowsLanguage: ["en", "es"],
