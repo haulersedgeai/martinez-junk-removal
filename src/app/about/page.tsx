@@ -118,7 +118,7 @@ export default function AboutPage() {
             />
           </div>
           <p className="mt-3 text-sm text-ink-500">
-            Mario (right) with the crew and the Martinez Junk Removal truck.
+            Mario (right) in front of the Martinez Junk Removal truck.
           </p>
         </div>
 

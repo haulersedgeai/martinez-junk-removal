@@ -203,7 +203,7 @@ export default function HomePage() {
           </div>
           <div className="flex-1">
             <p className="font-heading text-lg font-medium leading-snug text-ink-900">
-              &ldquo;Customer service is our number one priority — on every job, every time.&rdquo;
+              &ldquo;Customer service is our number one priority.&rdquo;
             </p>
             <p className="mt-2 text-sm font-semibold text-brand-700">
               {business.owner} · Owner, {business.displayName}
